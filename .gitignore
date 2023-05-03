@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+# Date folders
+data/
+images/
 
 # C extensions
 *.so
