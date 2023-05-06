@@ -19,7 +19,7 @@ class SentinelDataDownloader:
         sentinel_api_query_input: SentinelAPIQueryInput,
     ):
         self.api = SentinelAPI(
-            username, password, "https://apihub.copernicus.eu/apihub"
+            username, password, self._URL
         )
         self.download_directory_path = Path(download_directory_path)
         self.sentinel_api_query_input = sentinel_api_query_input
