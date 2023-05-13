@@ -1,0 +1,148 @@
+{
+  "date": "2023-05-11",
+  "estuary_name": "Cocagne",
+  "participants": [
+    "Simon", "Andre", "Mike", "Prantor", "Ehsan", "Philippe"
+  ],
+  "notes": "Start around 9h in the morning. Andre, Mike, Prantor and Ehsan went for the turbidity and ADCP. Phil and Sim took the spatial turbidity measurements. Blue bird, getting slow wind.",
+  "ADCP": {
+    "geo_coordinates": {
+      "lat": 46.428958,
+      "lon": -64.789768
+    },
+    "time": "12:05"
+  },
+  "turbidity_probe": {
+    "geo_coordinates": {
+      "lat": 46.428697,
+      "lon": -64.789029
+    },
+    "time": "12:10"
+  },
+  "spatial_turbidity_measurement": {
+    "turbidity_unit": "FNU",
+    "depth_unit": "meter",
+    "measurements_list": [
+      {
+        "geo_coordinates": {
+          "lat": 46.471509,
+          "lon": -64.717459
+        },
+        "time": "14:35",
+        "notes": "Bridge road 135, south side, downstream",
+        "depth": 0,
+        "measures": [1.2, 1.1, 1.1, 0.8, 0.8]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.47161397,
+          "lon": -64.718656
+        },
+        "time": "12:55",
+        "notes": "Bridge road 135, Middle of bridge, downstream, surface",
+        "depth": 0,
+        "measures": [4.8, 1.2, 0.8, 0.8, 1.1]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.47161397,
+          "lon": -64.718656
+        },
+        "time": "13:03",
+        "notes": "Bridge road 135, Middle of bridge, downstream, 900cm deep",
+        "depth": 9.0,
+        "measures": [1.4, 0.6, 0.0, 0.2, 0.6]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.472028,
+          "lon": -64.7193886
+        },
+        "time": "12:48",
+        "notes": "Bridge road 135, North side, downstream",
+        "depth": 0,
+        "measures": [1.8, 2.2, 4.2, 3.5, 2.1]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.463093,
+          "lon": -64.726980
+        },
+        "time": "15:18",
+        "notes": "Pedestrian bridge near highway 11, south side, downstream",
+        "depth": 0,
+        "measures": [1.3, 1.7, 2.1, 1.8, 1.9]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.463679,
+          "lon": -64.727221
+        },
+        "time": "15:02",
+        "notes": "Pedestrian bridge near highway 11, middle of it surface, downstream",
+        "depth": 0,
+        "measures": [2.6, 2.1, 1.6, 3.4, 2.6]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.463679,
+          "lon": -64.727221
+        },
+        "time": "15:11",
+        "notes": "Pedestrian bridge near highway 11, middle of it bottom, downstream",
+        "depth": 5.79,
+        "measures": [0.8, 0.5, 0.5, 0.3, 1.3]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.464416,
+          "lon": -64.727311
+        },
+        "time": "14:51",
+        "notes": "Pedestrian bridge near highway 11, North side, downstream",
+        "depth": 0,
+        "measures": [0.6, 1.8, 0.8, 1.6, 1.0]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.410455,
+          "lon": -64.819640
+        },
+        "time": "16:20",
+        "notes": "Bridge road 525, South side, downstream, Brown water",
+        "depth": 0,
+        "measures": [6.3, 7.3, 8.3, 7.0, 7.9]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.411097,
+          "lon": -64.820753
+        },
+        "time": "16:05",
+        "notes": "Bridge road 525, Middle of it surface, downstream, Brown water",
+        "depth": 0,
+        "measures": [5.1, 5.6, 6.2, 5.7, 6.7]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.411097,
+          "lon": -64.820753
+        },
+        "time": "16:00",
+        "notes": "Bridge road 525, Middle of it surface, downstream, Brown water",
+        "depth": 2.27,
+        "measures": [0.5, 2.1, 1.6, 1.4, 2.4]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.411397,
+          "lon": -64.820827
+        },
+        "time": "15:53",
+        "notes": "Bridge road 525, North side, downstream, Brown water",
+        "depth": 0,
+        "measures": [4.5, 4.1, 4.9, 4.3, 5.1]
+      }
+    ]
+  }
+}

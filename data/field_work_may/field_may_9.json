@@ -1,0 +1,84 @@
+{
+    "date": "2023-05-09",
+    "estuary_name": "West",
+    "participants": [
+        "Mike", "Andre", "Simon", "Prantor", "Ehsan", "Philippe"
+    ],
+    "notes": "Windy. Forecasting wind of 30km/h, with gust of 40km/h. Partialy clouded and sunny. Around 5 Celcius.",
+    "data_taken_by": "Philippe Blouin-Leclerc",
+    "ADCP": {
+        "geo_coordinates": {
+            "lat": 46.197352, "lon": -63.295135
+        },
+        "time": "12:28"
+    },
+    "turbidity_probe": {
+        "geo_coordinates": {
+            "lat": 46.198073, "lon": -63.296262
+        },
+        "time": "12:36"
+    },
+    "spatial_turbidity_measurement":
+    {
+        "turbidity_unit": "FNU",
+        "depth_unit": "meter",
+        "measurements_list": [
+            {
+                "geo_coordinates": {"lat": 46.201445, "lon": -63.287011},
+                "notes": "On the north side of the bridge near the , on road 9",
+                "depth": 0,
+                "time": "13:39",
+                "measures": [10.1, 8.5, 5.4]
+            },
+            {
+                "geo_coordinates": {"lat": 46.200030, "lon": -63.286993},
+                "notes": "Middle of the bridge, at the surface with van dorn bottle, on road 9",
+                "depth": 0,
+                "time": "14:00",
+                "measures": [13.4, 10.0, 12.8, 11.2, 23.9]
+            },
+            {
+                "geo_coordinates": {"lat": 46.200030, "lon": -63.286993},
+                "notes": "Middle of the bridge, at 0.5m with van dorn bottle, on road 9",
+                "depth": 0.5,
+                "time": "14:10",
+                "measures": [12.4, 13.7, 12.9, 14.1, 10.2]
+            },
+            {
+                "geo_coordinates": {"lat": 46.199158, "lon": -63.286772},
+                "notes": "On the south side of the bridges near the rocks, on road 9",
+                "depth": 0,
+                "time": "14:20",
+                "measures": [4.7, 5.6, 5.2, 13.9, 22.1]
+            },
+            {
+                "geo_coordinates": {"lat": 46.188624, "lon": 63.233704},
+                "notes": "On the south side of the bridges, near the rocks, on road 19",
+                "depth": 0,
+                "time": "14:50",
+                "measures": [6.7, 4.5, 4.8, 5.9, 5.1]
+            },
+            {
+                "geo_coordinates": {"lat": 46.191226, "lon": -63.233486},
+                "notes": "Middle of the 'first' bridge from the south, at surface with van dorn, on road 19",
+                "depth": 0,
+                "time": "14:55",
+                "measures": [6.7, 5.5, 6.0, 8.6, 5.5]
+            },
+            {
+                "geo_coordinates": {"lat": 46.191226, "lon": -63.233486},
+                "notes": "Middle of the 'first' bridge from the south, at 0.5m with van dorn, on road 19",
+                "depth": 0.5,
+                "time": "15:00",
+                "measures": [8.3, 9.9, 11.4, 9.8, 9.4]
+            },
+            {
+                "geo_coordinates": {"lat": 46.192057, "lon": -63.233036},
+                "notes": "On the north side of the first bridge from the south. On the side of the rocks, on road 19",
+                "depth": 0,
+                "time": "15:20",
+                "measures": [4.4, 4.7, 4.7, 4.7, 5.0]
+            }
+        ]
+    }
+}

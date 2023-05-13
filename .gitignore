@@ -3,7 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 # Date folders
-data/
+data/cocagne_shp_files/
+data/sentinel2_data/
 images/
 
 # C extensions

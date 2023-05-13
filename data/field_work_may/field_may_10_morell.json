@@ -1,0 +1,108 @@
+{
+  "date": "2023-05-10",
+  "estuary_name": "Morell",
+  "participants": [
+    "Mike", "Andre", "Simon", "Prantor", "Ehsan", "Philippe"
+  ],
+  "notes": "Start a 8h27, clouds but mostly sunny after 10h. Forecasting winds of 20km/h and Gust of 30 km/h",
+  "ADCP": {
+    "geo_coordinates": {
+      "lat": 46.420334,
+      "lon": -62.688505
+    },
+    "time": "8:41"
+  },
+  "turbidity_probe": {
+    "geo_coordinates": {
+      "lat": 46.419887,
+      "lon": -62.687892
+    },
+    "time": "8:51"
+  },
+  "spatial_turbidity_measurement": {
+    "turbidity_unit": "FNU",
+    "depth_unit": "meter",
+    "measurements_list": [
+      {
+        "geo_coordinates": {
+          "lat": 46.420466,
+          "lon": -62.685952
+        },
+        "time": "8:56",
+        "notes": "Confederation trail bridge. West side of it. Downstream",
+        "depth": 0,
+        "measures": [6.4, 7.0, 5.8, 6.6, 6.6]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.420537,
+          "lon": -62.685340
+        },
+        "time": "9:00",
+        "notes": "Confederation trail bridge. Middle side of it. Downstream, surface",
+        "depth": 0,
+        "measures": [4.3, 15.8, 8.4, 16.0, 4.0, 10.8]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.420537,
+          "lon": -62.685340
+        },
+        "time": "9:05",
+        "notes": "Confederation trail bridge. Middle side of it. Downstream, 3m",
+        "depth": 3,
+        "measures": [5.8, 6.7, 5.5, 6.6, 12]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.420417,
+          "lon": -62.684975
+        },
+        "time": "9:17",
+        "notes": "Confederation trail bridge. East side of it. Downstream",
+        "depth": 0,
+        "measures": [7.3, 8.9, 9.4, 10.0, 13.9]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.415884,
+          "lon": -62.699095
+        },
+        "time": "9:50",
+        "notes": "Road 2 bridge. West side of it. Downstream",
+        "depth": 0,
+        "measures": [3.1, 3.7, 2.0, 1.6, 2.2]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.415669,
+          "lon": -62.698644
+        },
+        "time": "9:30",
+        "notes": "Road 2 bridge. Middle of it, downstream, surface",
+        "depth": 0,
+        "measures": [1.7, 5.8, 1.0, 4.7, 0.9]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.415669,
+          "lon": -62.698644
+        },
+        "time": "9:35",
+        "notes": "Road 2 bridge. Middle of it, downstream, 3m",
+        "depth": 3,
+        "measures": [5.2, 4.7, 6.3, 7.3, 3.6]
+      },
+      {
+        "geo_coordinates": {
+          "lat": 46.415665,
+          "lon": -62.698578
+        },
+        "time": "9:40",
+        "notes": "Road 2 bridge. East side of it. Downstream",
+        "depth": 0,
+        "measures": [5.4, 0.4, 2.2, 4.6, 2.2]
+      }
+    ]
+  }
+}
