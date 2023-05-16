@@ -4,8 +4,11 @@ __pycache__/
 *$py.class
 # Date folders
 data/cocagne_shp_files/
+data/pei_shp_files/
 data/sentinel2_data/
 images/
+data/field_work/
+
 
 # C extensions
 *.so
