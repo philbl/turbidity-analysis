@@ -37,7 +37,10 @@ class RescaleImage:
             the interpolation order to use (nearest-neighbor interpolation is used here).
             The rescaled band is returned as an ndarray.
         """
-        image_rescale = rescale(band, self.rescale_factor, preserve_range=True, order=0, anti_aliasing=False)
+        kwargs_dict = {"preserve_range":True, "order":0, "anti_aliasing":False}
+        if band.ndim == 3:
+            kwargs_dict["channel_axis"] = 2
+        image_rescale = rescale(band, self.rescale_factor, **kwargs_dict)
         return image_rescale
     
     def apply_transformation_to_geocoordinates(self, row_index, col_index):
@@ -199,10 +202,17 @@ class PolygoneBoundariesImage:
         Returns:
             ndarray: The subset image band.
         """
-        subset_band = band[
-            self._min_row:self._max_row,
-            self._min_col:self._max_col
-        ]
+        if band.ndim == 2:
+            subset_band = band[
+                self._min_row:self._max_row,
+                self._min_col:self._max_col
+            ]
+        elif band.ndim == 3:
+            subset_band = band[
+                self._min_row:self._max_row,
+                self._min_col:self._max_col,
+                :
+            ]
         return subset_band
 
     def apply_transformation_to_geocoordinates(self, row_index, col_index):

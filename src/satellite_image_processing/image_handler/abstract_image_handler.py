@@ -49,6 +49,7 @@ class AbstractImageHandler(ABC):
         "green_band": "B03",
         "red_band": "B04",
         "nir_band": "B08",
+        "true_color_image": "TCI",
         "cloud_prob": "MSK_CLDPRB_20m"
     }
     def __init__(self, zip_path):
@@ -117,6 +118,16 @@ class AbstractImageHandler(ABC):
             numpy.ndarray: NIR band data.
         """
         return self._subset_transformed_data_dict["nir_band"]
+
+    @property
+    def true_color_image(self):
+        """
+        True Color Image.
+
+        Returns:
+            numpy.ndarry: True Color Image.
+        """
+        return self._subset_transformed_data_dict["true_color_image"]
     
     @property
     def cloud_prob(self):
@@ -146,7 +157,7 @@ class AbstractImageHandler(ABC):
         Returns:
             float: Calculated cloud coverage percentage.
         """
-        return (self._subset_transformed_data_dict["cloud_prob"] > 25).mean()
+        return (self._subset_transformed_data_dict["cloud_prob"] > 10).mean()
     
     @property
     def date(self):
@@ -255,10 +266,11 @@ class AbstractImageHandler(ABC):
         """
         transformed_data_dict = {}
         for band_name in self.BAND_NAME_MAPPING.keys():
-            band = loaded_data_dict[band_name].copy()
+            band = loaded_data_dict.pop(band_name)
             for transformation in self._image_transformation_list():
                 band = transformation.apply_transformation_to_band(band)
             transformed_data_dict[band_name] = band
+            del band
         return transformed_data_dict
     
     def _get_row_col_index_after_transformation_from_longitide_latitude(self, longitude, latitude):
@@ -290,9 +302,10 @@ class AbstractImageHandler(ABC):
         """
         polygone_subset_data_dict = {}
         for band_name in self.BAND_NAME_MAPPING.keys():
-            band = transformed_data_dict[band_name].copy()
-            subset_band = self._image_wkt_polygone_subset().apply_transformation_to_band(band)
-            polygone_subset_data_dict[band_name] = subset_band
+            band = transformed_data_dict.pop(band_name)
+            band = self._image_wkt_polygone_subset().apply_transformation_to_band(band)
+            polygone_subset_data_dict[band_name] = band
+            del band
         return polygone_subset_data_dict
     
     def get_row_col_index_from_longitide_latitude(self, longitude, latitude):
@@ -357,7 +370,13 @@ class AbstractImageHandler(ABC):
         for band_name, band_code in self.BAND_NAME_MAPPING.items():
             file_list = granule_file if band_name == "cloud_prob" else R10m_file
             path = list(filter(lambda file: band_code in file.filename, file_list))[0].filename
-            band = rasterio.open(Path(zip_format_path, path), driver="JP2OpenJPEG").read(1)
+            if band_name == "true_color_image":
+                with rasterio.open(Path(zip_format_path, path), driver="JP2OpenJPEG") as src:
+                    band = src.read()
+                band = numpy.moveaxis(band, 0, -1)
+            else:
+                with rasterio.open(Path(zip_format_path, path), driver="JP2OpenJPEG") as src:
+                    band = src.read(1)
             data_dict[band_name] = band
             if band_name == "blue_band":
                 with rasterio.open(Path(zip_format_path, path), driver="JP2OpenJPEG") as src:
