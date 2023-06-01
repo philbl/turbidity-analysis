@@ -62,3 +62,19 @@ class CocagneImageHandler(AbstractImageHandler):
             area_dict["cocagne"],
             self._get_row_col_index_after_transformation_from_longitide_latitude
         )
+
+
+class WestImageHandler(AbstractImageHandler):
+    @property
+    def estuary_name(self):
+        return "west"
+    
+    def _image_transformation_list(self):
+        transform_list = []
+        return transform_list
+    
+    def _image_wkt_polygone_subset(self):
+        return PolygoneBoundariesImage(
+            area_dict["west"],
+            self._get_row_col_index_after_transformation_from_longitide_latitude
+        )

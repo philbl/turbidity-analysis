@@ -157,7 +157,7 @@ class AbstractImageHandler(ABC):
         Returns:
             float: Calculated cloud coverage percentage.
         """
-        return (self._subset_transformed_data_dict["cloud_prob"] > 25).mean()
+        return (self._subset_transformed_data_dict["cloud_prob"] > 10).mean()
     
     @property
     def date(self):
