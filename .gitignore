@@ -3,11 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 # Date folders
-data/cocagne_shp_files/
-data/pei_shp_files/
-data/sentinel2_data/
+data/
 images/
-data/field_work/
+
 
 
 # C extensions
