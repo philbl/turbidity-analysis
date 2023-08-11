@@ -5,6 +5,7 @@ import pickle
 from pathlib import Path
 import zipfile
 import xml.etree.ElementTree as ET
+from scipy import ndimage
 from skimage.transform import rescale
 
 from src.satellite_image_processing.projections import (
@@ -20,10 +21,13 @@ class AbstractImageHandler(ABC):
 
     Methods:
         estuary_name (property): Name of the estuary.
-        blue_band (property): Blue band data.
-        green_band (property): Green band data.
-        red_band (property): Red band data.
-        nir_band (property): NIR band data.
+        blue_band (property): Blue band data 10m.
+        green_band (property): Green band data 10m.
+        red_band (property): Red band data 10m.
+        nir_band (property): NIR band data 10m.
+        true_color_image (property): True Color Image 10m.
+        scene_clf (property): Scene Classification. Resolution of 20m, rescale to 10m.
+        water_mask (property): Water mask according to scene_clf.
         cloud_prob (property): Cloud probability data.
         cloud_coverage (property): Cloud coverage percentage.
         calculated_cloud_coverage (property): Calculated cloud coverage based on cloud probability.
@@ -32,6 +36,7 @@ class AbstractImageHandler(ABC):
         affine_matrix (property): Affine transformation matrix of the image.
         image_shape (property): Shape of the image.
         index_function: Index function for transforming coordinates.
+        get_smoothed_water_mask: Smooth the water mask according to gaussian filter.
         get_row_col_index_from_longitude_latitude: Get row and column indices from longitude and latitude coordinates.
         get_rgb_float_true_color_image: Get RGB float true color image.
         _image_transformation_list: List of image transformations to apply.
@@ -50,7 +55,8 @@ class AbstractImageHandler(ABC):
         "red_band": "B04",
         "nir_band": "B08",
         "true_color_image": "TCI",
-        "cloud_prob": "MSK_CLDPRB_20m"
+        "cloud_prob": "MSK_CLDPRB_20m",
+        "scene_clf": "SCL_20m"
     }
     def __init__(self, zip_path):
         """
@@ -140,6 +146,36 @@ class AbstractImageHandler(ABC):
         return self._subset_transformed_data_dict["cloud_prob"]
     
     @property
+    def scene_clf(self):
+        """
+        Scene Classification.
+        mapping is:
+            0: No Data
+            1: Saturated or Defective
+            2: Dark area pixels
+            3: Cloud Shadows
+            4: Vegetation
+            5: non-Vegetated
+            6: Water
+            7: Unclassified
+            8: Cloud medium Probability
+            9: Cloud high Probability
+            10: Thin cirrus
+            11: Snow
+
+        Returns:
+            numpy.ndarray: Cloud probability data.
+        """
+        return self._subset_transformed_data_dict["scene_clf"]
+    
+    @property
+    def water_mask(self):
+        """
+        Mask of water pixel according to the scene clf
+        """
+        return self.scene_clf == 6
+    
+    @property
     def cloud_coverage(self):
         """
         Cloud coverage percentage.
@@ -198,6 +234,9 @@ class AbstractImageHandler(ABC):
             tuple: Shape of the image.
         """
         return self._image_shape
+    
+    def get_smoothed_water_mask(self, sigma=2, threshold=0.75):
+        return ndimage.gaussian_filter(self.water_mask.astype(float), sigma=sigma) > threshold
     
     @abstractmethod
     def _image_transformation_list(self):
@@ -368,7 +407,7 @@ class AbstractImageHandler(ABC):
         granule_file = list(filter(lambda file: "GRANULE" in file.filename, all_file_name))
         R10m_file = list(filter(lambda file: "R10m" in file.filename, granule_file))
         for band_name, band_code in self.BAND_NAME_MAPPING.items():
-            file_list = granule_file if band_name == "cloud_prob" else R10m_file
+            file_list = granule_file if band_name in ["cloud_prob", "scene_clf"] else R10m_file
             path = list(filter(lambda file: band_code in file.filename, file_list))[0].filename
             if band_name == "true_color_image":
                 with rasterio.open(Path(zip_format_path, path), driver="JP2OpenJPEG") as src:
@@ -386,6 +425,7 @@ class AbstractImageHandler(ABC):
         data_dict["affine_matrix"] = affine_matrix
 
         data_dict["cloud_prob"] = rescale(data_dict["cloud_prob"], 2, preserve_range=True, order=0)
+        data_dict["scene_clf"] = rescale(data_dict["scene_clf"], 2, preserve_range=True, order=0)
 
         return data_dict
 
