@@ -202,15 +202,17 @@ class PolygoneBoundariesImage:
         Returns:
             ndarray: The subset image band.
         """
+        min_row = max(self._min_row, 0)
+        min_col = max(self._min_col, 0)
         if band.ndim == 2:
             subset_band = band[
-                self._min_row:self._max_row,
-                self._min_col:self._max_col
+                min_row:self._max_row,
+                min_col:self._max_col
             ]
         elif band.ndim == 3:
             subset_band = band[
-                self._min_row:self._max_row,
-                self._min_col:self._max_col,
+                min_row:self._max_row,
+                min_col:self._max_col,
                 :
             ]
         return subset_band
