@@ -10,5 +10,5 @@ geopandas==0.12.2
 rasterio==1.3.6
 scikit-image==0.20.0
 scikit-learn==1.2.2
-sentinelsat==1.1.1
 jinja2==3.1.2
+git+https://github.com/philbl/satellite-image-handler.git@main
